@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   def dashboard
-    @restaurants = Restaurant.where(user_id == current_user.id)
-    # where(user_id: current_user.id)
+    @restaurants = current_user.restaurants
   end
 end
