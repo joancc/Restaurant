@@ -1,5 +1,5 @@
 class ReservationMailer < ActionMailer::Base
-  default from: "from@example.com"
+  default from: "from@email.com"
 
   def reservation_notification(user, reservation)
     @reservation = reservation
