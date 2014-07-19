@@ -28,6 +28,7 @@
           <li><%= link_to("Restaurant List", root_path ) %></li>
           <li><%= link_to("New Restaurant", new_restaurant_path ) %></li>
           <% if current_user %>
+            <li><%= link_to("Dashboard", "/users/dashboard") %></li>
             <li><%= link_to("Logout", destroy_user_session_path, method: :delete) %></li>
           <% else %>
             <li><%= link_to("Login", new_user_session_path) %></li>
