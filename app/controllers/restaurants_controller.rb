@@ -5,6 +5,11 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+  def jsonView
+    @restaurants = Restaurant.all
+    render json: @restaurants.to_json(only: [:address], include: :user)
+  end
+
   def show
     @restaurant = Restaurant.find(params[:id])
     @user = User.find(@restaurant.user_id)
@@ -51,6 +56,10 @@ class RestaurantsController < ApplicationController
     restaurant = Restaurant.find(params[:id])
     restaurant.destroy
     redirect_to(action: 'index')
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
