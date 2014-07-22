@@ -14,7 +14,12 @@
   <dd><%= @restaurant.name %></dd>
 
   <dt><strong><%= model_class.human_attribute_name(:category) %>:</strong></dt>
-  <dd><%= @restaurant.categories.first.name %></dd> 
+  <dd>
+    <% @restaurant.categories.each do |category| %>
+      <%= category.name %>
+      <br>
+    <% end %>
+  </dd> 
 
   <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
   <dd><%= @restaurant.description %></dd>
