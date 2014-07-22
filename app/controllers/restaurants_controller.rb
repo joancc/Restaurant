@@ -19,10 +19,14 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
+    @restaurant.categories.build
+    @category_names = Category.all.map{|category| category.name}
   end
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.category_ids = params[:restaurant][:category_ids]
+    
     if current_user
       @restaurant.user = current_user
       if @restaurant.save

@@ -23,13 +23,20 @@
       <%= f.text_field :phone, { :class => 'text_field', required: true } %>
     </div>
   </div>
+
+  <div class="control-group">
+    <!-- select_tag( form id and value, options_from_collection_for_select(source, dom tag value, visible name) )-->
+    <%= select_tag("restaurant[category_ids][]", options_from_collection_for_select(Category.all, :id, :name)) %>
+  </div>
+
+  
   <div class="control-group">
     <%= f.label :image %><br>
-    <%= f.file_field :image, { required: true } %>
+    <%= f.file_field :image %>
   </div>
   <div class="control-group">
     <%= f.label :menu %>
-    <%= f.file_field :menu, { required: true } %>
+    <%= f.file_field :menu %>
   </div>
 
   <div class="form-actions">
