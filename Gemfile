@@ -39,6 +39,9 @@ gem 'fog'
 # Handle .gitignore to avoid sharing credentials on GitHub
 gem 'figaro'
 
+# Improve search capabilities for many to many associations
+gem 'chosen-rails'
+
 group :development,:test do
   # Use mysql as the database for Active Record
   gem 'mysql2'

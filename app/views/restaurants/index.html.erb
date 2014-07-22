@@ -5,9 +5,9 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th></th>
-      <!-- <th><%= model_class.human_attribute_name(:id) %></th> -->
+      <th>&nbsp;</th>
       <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:category) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
@@ -20,6 +20,7 @@
 
         <td><%= image_tag(restaurant.image_url(:thumb).to_s, alt: "No file found") %></td>
         <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+        <td><%= restaurant.categories.first.name if restaurant.categories.first %></td>
         <td><%= restaurant.description %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.phone %></td>

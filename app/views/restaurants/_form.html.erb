@@ -25,10 +25,11 @@
   </div>
 
   <div class="control-group">
-    <!-- select_tag( form id and value, options_from_collection_for_select(source, dom tag value, visible name) )-->
-    <%= select_tag("restaurant[category_ids][]", options_from_collection_for_select(Category.all, :id, :name)) %>
-  </div>
+    <!-- select_tag( form id and value, options_from_collection_for_select(collection, value_method, text_method, selected = nil) )-->
 
+    <%= f.label :category_ids, "Categories" %>
+    <%= f.collection_select :category_ids, Category.order(:name), :id, :name, { }, { multiple: true } %>
+  </div>
   
   <div class="control-group">
     <%= f.label :image %><br>
