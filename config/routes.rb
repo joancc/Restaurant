@@ -5,6 +5,12 @@ Rails.application.routes.draw do
   root 'restaurants#index'
 
   resources :restaurants do
+    # Member blocks generates routes for memebers of that model such as
+    # restaurants/:id/jsonView
+    # Collection is available for routes such as restaurants/jsonView
+    member do
+      get 'jsonView'
+    end
     resources :reservations
   end
 
