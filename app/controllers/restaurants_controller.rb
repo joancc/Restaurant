@@ -65,9 +65,10 @@ class RestaurantsController < ApplicationController
     restaurant.destroy
     redirect_to(action: 'index')
 
-    respond_to do |format|
-      format.js
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
 
   private

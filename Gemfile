@@ -49,6 +49,13 @@ group :development,:test do
   gem 'mysql2'
   gem "rspec-rails"
   gem "factory_girl_rails"
+
+  # Debugging
+  # gem 'better_errors'
+  # gem 'pry-rails'
+  # gem 'pry-stack_explorer'
+  # gem 'pry-debugger'
+  # gem 'annotate'
 end
 
 group :test do
