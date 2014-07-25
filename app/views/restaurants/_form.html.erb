@@ -1,8 +1,8 @@
-<%= form_for @restaurant, :html => { multipart: true, :class => 'form-horizontal' } do |f| %>
+<%= form_for @restaurant, :html => { multipart: true, :class => 'form-horizontal', 'data-parsley-validate' => '' } do |f| %>
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+      <%= f.text_field :name, { required: true } %>
     </div>
   </div>
   <div class="control-group">
@@ -20,7 +20,7 @@
   <div class="control-group">
     <%= f.label :phone, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :phone, { :class => 'text_field', required: true } %>
+      <%= f.text_field :phone, { :class => 'text_field', required: true, 'data-parsley-pattern' => "^[0-9]{10}$" } %>
     </div>
   </div>
 

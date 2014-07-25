@@ -14,3 +14,11 @@
  *= require chosen
  *= require parsley
  */
+
+#nav-search{
+  margin-top: 1em;
+}
+
+#search_category_name, #search_restaurant_name{
+  width: 150px;
+}

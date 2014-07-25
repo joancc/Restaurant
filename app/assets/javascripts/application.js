@@ -18,3 +18,9 @@
 //= require twitter/bootstrap
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  $("#search_category_ids").chosen()
+  $("#search_restaurant_ids").chosen()
+});
+  

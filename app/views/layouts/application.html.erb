@@ -35,6 +35,19 @@
             <li><%= link_to("Signup", new_user_registration_path) %></li>
           <% end %>
         </ul>
+        <ul class="nav pull-right" id="nav-search">
+          <%= form_for @search, url: { controller: 'searches', action: 'create' }, html: { class: 'form-inline' } do |f| %>
+            <span class="field">
+              
+              <%= f.collection_select :restaurant_ids, Restaurant.order(:name), :id, :name, {}, { multiple: true, 'data-placeholder' => "Find restaurants" } %>
+            </span>
+            <span class="field">
+              
+              <%= f.collection_select :category_ids, Category.order(:name), :id, :name, {}, { multiple: true, 'data-placeholder' => "Find categories" } %>
+            </span>
+            <span class="actions"><%= f.submit "Search" %></span>
+          <% end %>
+        </ul>
       </div>
     </div>
   </div>
