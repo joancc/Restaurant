@@ -4,7 +4,7 @@ class RestaurantsController < ApplicationController
   def index
     @restaurants = Restaurant.all
     @categories = Category.all
-    @search = Search.new
+    
   end
 
   def jsonView
@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @search = Search.new
+    
     @restaurant = Restaurant.find(params[:id])
     @user = User.find(@restaurant.user_id)
     @reservation = Reservation.new(restaurant_id: @restaurant[:id])
@@ -21,7 +21,7 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @search = Search.new
+    
     @restaurant = Restaurant.new
     @restaurant.categories.build
     @category_names = Category.all.map{|category| category.name}
