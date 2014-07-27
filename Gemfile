@@ -79,6 +79,9 @@ gem 'devise'
 #Client side validation
 gem 'parsley-rails'
 
+# Works with Google Maps API
+gem 'geocoder'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

@@ -34,8 +34,16 @@ class RestaurantsController < ApplicationController
     if current_user
       @restaurant.user = current_user
       if @restaurant.save
-        flash[:notice] = "Restaurant created successfully."
-        redirect_to(action: 'index')
+        @location = Location.new
+        @location[:address] = @restaurant.address
+        @location[:restaurant_id] = @restaurant.id
+        if@location.save
+          flash[:notice] = "Restaurant created successfully."
+          redirect_to(action: 'index')
+        else
+          flash[:error] = @location.errors.full_messages[0]
+          render('new')  
+        end
       else
         flash[:error] = @restaurant.errors.full_messages[0]
         render('new')
@@ -53,6 +61,7 @@ class RestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:id])
     if @restaurant.update_attributes(restaurant_params)
+      @restaurant.location.update_attributes(address: @restaurant.address)
       flash[:notice] = "Restaurant updated successfully."
       redirect_to(action: 'show')
     else
