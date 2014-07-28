@@ -3,6 +3,16 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+    @locations = @restaurants.map{|rest|
+      rest.location
+    }
+    @categories_by_restaurant = @restaurants.map{|rest|
+      rest.categories
+    }
+
+    @marker_icons = @categories_by_restaurant.map{|cat|
+      cat[0].name+".png"
+    }
     @categories = Category.all
     
   end

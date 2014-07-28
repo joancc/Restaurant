@@ -56,4 +56,14 @@
             new_restaurant_path,
             :class => 'btn btn-primary' %>
 
-<div></div>
+<!-- Data attributes are automatically converted to JSON -->
+<%= content_tag("div", id: "map_canvas", style: "height:500px;width:600px;", data: {restaurants: @restaurants, locations: @locations, categories: @categories_by_restaurant, marker_icons: @marker_icons}) do %>
+<% end %>
+
+<!-- THIS LINE IS ONLY FOR PRODUCTION -->
+<!-- <script src = "https://maps.googleapis.com/maps/api/js?key=MAPS_API_KEY&amp;sensor=false"></script>   -->
+<script type="text/javascript">
+  initialize();
+</script>  
+
+  

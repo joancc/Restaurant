@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get '/all' => 'restaurants#index', as: 'all_restaurants'
   get '/index' => redirect('/all')
   get '/users/dashboard'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

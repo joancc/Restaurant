@@ -81,6 +81,7 @@ gem 'parsley-rails'
 
 # Works with Google Maps API
 gem 'geocoder'
+gem 'gmaps4rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'
