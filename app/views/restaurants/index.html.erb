@@ -57,7 +57,7 @@
             :class => 'btn btn-primary' %>
 
 <!-- Data attributes are automatically converted to JSON -->
-<%= content_tag("div", id: "map_canvas", style: "height:500px;width:600px;", data: {restaurants: @restaurants, locations: @locations, categories: @categories_by_restaurant, marker_icons: @marker_icons}) do %>
+<%= content_tag("div", id: "map_canvas", style: "height:500px;width:600px;", data: {restaurants: @restaurants, locations: @locations, categories: @categories_by_restaurant, marker_icons: @marker_icons, restaurants_urls: @restaurants_urls}) do %>
 <% end %>
 
 <!-- THIS LINE IS ONLY FOR PRODUCTION -->

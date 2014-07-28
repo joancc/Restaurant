@@ -13,6 +13,11 @@ class RestaurantsController < ApplicationController
     @marker_icons = @categories_by_restaurant.map{|cat|
       cat[0].name+".png"
     }
+
+    @restaurants_urls = @restaurants.map{|rest|
+      restaurant_url(rest)
+    }
+
     @categories = Category.all
     
   end

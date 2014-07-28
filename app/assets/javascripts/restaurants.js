@@ -10,6 +10,7 @@ function initialize() {
   var locations = $("#map_canvas").data("locations");
   var categories = $("#map_canvas").data("categories");
   var markerIcons = $("#map_canvas").data("markerIcons");
+  var restaurantsUrls = $("#map_canvas").data("restaurantsUrls");
 
   var mapOptions = {
     center: new google.maps.LatLng(locations[0].latitude, locations[0].longitude),
@@ -33,13 +34,15 @@ function initialize() {
     var marker = new google.maps.Marker({ 
       position: latLng, 
       map: map,
-      icon: image
+      icon: image, 
     });
 
     var infowindow = new google.maps.InfoWindow();
     google.maps.event.addListener(marker, 'click', (function(marker, i) {
       return function() {
-        infowindow.setContent(restaurants[i].name);
+        infowindow.setContent(
+          '<a href='+restaurantsUrls[i]+'>'+restaurants[i].name+'</a>'
+        );
         infowindow.open(map, marker);
       }
     })(marker, i));
