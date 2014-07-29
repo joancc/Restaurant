@@ -25,7 +25,7 @@
         <td><%= restaurant.address %></td>
         <td><%= restaurant.phone %></td>
 
-        <% if current_user && restaurant.user_id.to_i == current_user.id %>
+        <% if current_user && current_user.owner? && restaurant.user_id.to_i == current_user.id %>
         
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),

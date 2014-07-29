@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get 'jsonView'
     end
     resources :reservations
+    resources :stars
   end
 
   get '/all' => 'restaurants#index', as: 'all_restaurants'

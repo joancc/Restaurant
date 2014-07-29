@@ -33,6 +33,12 @@ class RestaurantsController < ApplicationController
     @user = User.find(@restaurant.user_id)
     @reservation = Reservation.new(restaurant_id: @restaurant[:id])
     @owned_reservations = Reservation.where(restaurant_id: @restaurant[:id])
+
+    if current_user && @restaurant.starred_by.where(id: current_user[:id]).empty?
+      @star = Star.new
+    else
+      @star = Star.where("restaurant_id = ? AND user_id = ?", @restaurant.id, current_user[:id]).first
+    end
   end
 
   def new
@@ -46,7 +52,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
     @restaurant.category_ids = params[:restaurant][:category_ids]
     
-    if current_user
+    if current_user.owner?
       @restaurant.user = current_user
       if @restaurant.save
         @location = Location.new

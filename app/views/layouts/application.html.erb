@@ -29,15 +29,17 @@
           <li><%= link_to("Restaurant List", root_path ) %></li>
           <li><%= link_to("New Restaurant", new_restaurant_path ) %></li>
           <% if current_user %>
-            <li><%= link_to("Dashboard", "/users/dashboard") %></li>
             <li><%= link_to("Logout", destroy_user_session_path, method: :delete) %></li>
+            <% if current_user.owner? %>
+              <li><%= link_to("Dashboard", "/users/dashboard") %></li>
+            <% end %>
           <% else %>
             <li><%= link_to("Login", new_user_session_path) %></li>
             <li><%= link_to("Signup", new_user_registration_path) %></li>
           <% end %>
         </ul>
         <ul class="nav pull-right" id="nav-search">
-          <%= form_for @search, url: { controller: 'searches', action: 'create' }, html: { class: 'form-inline' } do |f| %>
+          <%= form_for @search, url: searches_url(@search), html: { class: 'form-inline' } do |f| %>
             <span class="field">
               
               <%= f.collection_select :restaurant_ids, Restaurant.order(:name), :id, :name, {}, { multiple: true, 'data-placeholder' => "Find restaurants" } %>
