@@ -3,6 +3,21 @@
 // # You can use CoffeeScript in this file: http:coffeescript.org/
 $(document).ready(function(){
   $("#restaurant_category_ids").chosen();
+
+  $("#star_form").on("ajax:success", function(e, data, status, xhr){
+    console.log("***********DATA*********");
+    console.log(data);
+
+    // if($("#star_form").attr('class') === 'new_star'){
+      
+      
+    //   $("#star_form input[type='submit']").val("Star");
+    // }else{
+    //   $("#star_form").removeClass('edit_star').addClass('new_star');
+    //   $("#star_form input[type='submit']").attr('action', data);
+    //   $("#star_form input[type='submit']").val("Unstar");
+    // }
+  });
 });
 
 function initialize() {

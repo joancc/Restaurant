@@ -1,0 +1,11 @@
+<%= form_for ([@restaurant, @star]), html:{id: 'star_form', remote: true} do |f| %>
+  <%= f.hidden_field :user_id, :value => @user_id %>
+  <%= f.hidden_field :restaurant_id, :value => @restaurant.id %>
+  <% if @star.persisted? %>
+    <i class="fa fa-star"></i>  
+    <%= f.submit 'Unstar', html:{id: '#star-five'} %>
+  <% else %>
+    <i class="fa fa-star-o"></i>  
+    <%= f.submit 'Star', html:{id: '#star-five'} %>
+  <% end %>
+<% end %>

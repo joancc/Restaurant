@@ -13,6 +13,7 @@
  *= require_self
  *= require chosen
  *= require parsley
+ *= require font-awesome
  */
 
 #nav-search{
@@ -21,4 +22,9 @@
 
 #search_category_name, #search_restaurant_name{
   width: 150px;
+}
+
+input[type="submit"] {
+    font-family: FontAwesome;
+    font-size: 1.3333333333333333em;
 }

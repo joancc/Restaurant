@@ -83,6 +83,9 @@ gem 'parsley-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
 
+# FontAwesome
+gem 'font-awesome-rails'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 

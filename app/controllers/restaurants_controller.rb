@@ -36,8 +36,10 @@ class RestaurantsController < ApplicationController
 
     if current_user && @restaurant.starred_by.where(id: current_user[:id]).empty?
       @star = Star.new
+      @user_id = current_user.id
     else
       @star = Star.where("restaurant_id = ? AND user_id = ?", @restaurant.id, current_user[:id]).first
+      @user_id = current_user.id
     end
   end
 
@@ -70,7 +72,7 @@ class RestaurantsController < ApplicationController
         render('new')
       end
     else
-      flash[:error] = "Please login to create a new entry."
+      flash[:error] = "Please login as an owner to create a new entry."
       render('new')
     end
   end

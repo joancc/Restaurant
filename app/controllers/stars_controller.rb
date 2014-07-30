@@ -1,15 +1,17 @@
 class StarsController < ApplicationController
   def create
     @star = Star.new
-    # puts "STAR PARAMS: #{params[:restaurant_id]}"
-    # puts "STAR PARAMS: #{params[:star][:user_id]}"
     @star.restaurant_id = params[:star][:restaurant_id]
     @star.user_id = params[:star][:user_id]
     @restaurant = Restaurant.find(params[:restaurant_id])
-
+    @user_id = current_user ? current_user.id : 0
+    puts "************USER_ID: #{@user_id}"
     if @star.save
       flash[:notice] = "Starred successfully."
-      redirect_to restaurant_path(@restaurant)
+      respond_to do |format|
+        format.js {  }
+        format.html { redirect_to restaurant_path(@restaurant) }
+      end
     else
       flash[:alert] = "Could not star. Please try again later."
     end
@@ -17,9 +19,14 @@ class StarsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @star =Star.where("restaurant_id = ? AND user_id = ?", params[:star][:restaurant_id], params[:star][:user_id]).first
+    @star = Star.where("restaurant_id = ? AND user_id = ?", params[:star][:restaurant_id], params[:star][:user_id]).first
     @star.destroy
-    redirect_to restaurant_path(@restaurant)
+    @star = Star.new 
+    @user_id = current_user ? current_user.id : 0
+    respond_to do |format|
+      format.js {  }
+      format.html { redirect_to restaurant_path(@restaurant) }
+    end
   end
 
 private
