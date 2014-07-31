@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # resources :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   
   root 'restaurants#index'
 
@@ -19,6 +18,7 @@ Rails.application.routes.draw do
 
   get '/all' => 'restaurants#index', as: 'all_restaurants'
   get '/index' => redirect('/all')
+  get '/' => redirect('/all')
   get '/users/dashboard'
 
   # The priority is based upon order of creation: first created -> highest priority.

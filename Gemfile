@@ -49,9 +49,13 @@ group :development,:test do
   gem 'mysql2'
   gem "rspec-rails"
   gem "factory_girl_rails"
+end
 
+group :development do
   # Debugging
-  # gem 'better_errors'
+  gem 'better_errors'
+  gem 'binding_of_caller' #Add details such as local and instance variables + interactove prompt
+  gem 'meta_request' #Add compatibility with Chrome Extension: Rails Panel
   # gem 'pry-rails'
   # gem 'pry-stack_explorer'
   # gem 'pry-debugger'
@@ -85,6 +89,9 @@ gem 'gmaps4rails'
 
 # FontAwesome
 gem 'font-awesome-rails'
+
+# Twitter authentication
+gem 'omniauth-twitter'
 
 # Use unicorn as the app server
 # gem 'unicorn'
