@@ -4,19 +4,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:twitter]
-          
-  
   # Devise uses encrypted_password, which conflicts with password_digest from has_secure_password
   # has_secure_password
-  has_many :restaurants
+
+
+  has_many :reservations
+  has_many :restaurants, through: :reservations, source: :restaurant
   has_many :stars
   has_many :starred_restaurants, through: :stars, source: :restaurant
 
-  # validates :password, presence: true, length: { minimum: 8 }
   validates_uniqueness_of :email 
-  # validates_presence_of :name, :email
-  # validates_confirmation_of :password
-  # validates :password_confirmation, presence: true, :on => :create
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_create do |user|

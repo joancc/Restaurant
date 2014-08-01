@@ -1,8 +1,10 @@
 class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
-
     @reservation.restaurant_id = params[:restaurant_id]
+    @reservation.user_id = current_user ? current_user.id : 0
+    @reservation.status = 'Pending'
+
     @restaurant = Restaurant.find(params[:restaurant_id])
     @user = User.find(@restaurant.user_id)
 
@@ -18,6 +20,6 @@ class ReservationsController < ApplicationController
   private 
 
   def reservation_params
-    params.require(:reservation).permit(:time, :email, :name, :restaurant_id)
+    params.require(:reservation).permit(:time, :date, :email, :name, :status, :restaurant_id, :user_id)
   end
 end

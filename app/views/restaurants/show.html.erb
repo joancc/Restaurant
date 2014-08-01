@@ -63,17 +63,7 @@
 <% end %>
 
 <!-- Resevations -->
-<h3>Make reservation</h3>
-<%= form_for [@restaurant, @reservation] do |f| %>
-    <%= f.label :name  %>
-    <%= f.text_field :name %>
-    <%= f.label :email  %>
-    <%= f.email_field :email %><br>
-    <%= f.label :time  %>
-    <%= f.datetime_select :time, default: Time.now %>
-
-    <%= f.submit %>
-<% end %>
+<%= render('reservations/form') %>
 
 
 

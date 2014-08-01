@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730203146) do
+ActiveRecord::Schema.define(version: 20140801182001) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -36,11 +36,16 @@ ActiveRecord::Schema.define(version: 20140730203146) do
   create_table "reservations", force: true do |t|
     t.integer  "restaurant_id"
     t.string   "name"
-    t.datetime "time"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.time     "time"
+    t.date     "date"
+    t.integer  "user_id"
+    t.string   "status"
   end
+
+  add_index "reservations", ["status"], name: "index_reservations_on_status", using: :btree
 
   create_table "restaurants", force: true do |t|
     t.string   "name"

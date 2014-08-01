@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def dashboard
     if current_user.owner?
-      @restaurants = current_user.restaurants
+      @restaurants = Restaurant.where(user_id = current_user.id)
     else
       @restaurants = current_user.starred_restaurants
     end
