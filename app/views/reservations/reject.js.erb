@@ -1,0 +1,3 @@
+var elementID = <%= @reservation.id %>;
+$("#"+elementID).parent().parent().hide();
+<% @reservation.destroy %>

@@ -29,6 +29,9 @@ gem 'spring',        group: :development
 
 gem 'less-rails'
 
+# Twitter
+gem 'twitter'
+
 gem 'twitter-bootstrap-rails'
 
 # UPLOAD FILES

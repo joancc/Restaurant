@@ -21,6 +21,18 @@ Rails.application.routes.draw do
   get '/' => redirect('/all')
   get '/users/dashboard'
 
+  # Reservations controller routes
+  get '/reservations/approve'
+  post '/reservations/approve'
+  get '/reservations/reject'
+
+
+
+
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

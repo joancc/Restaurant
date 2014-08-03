@@ -13,7 +13,25 @@ class ReservationsController < ApplicationController
       ReservationMailer.reservation_notification(@user, @reservation).deliver
       redirect_to(restaurant_path(@restaurant))
     else
-      render('restaurants#show')
+      flash[:alert] = @reservation.errors.full_messages[0]
+      redirect_to restaurant_path(@restaurant)
+    end
+  end
+
+  def approve
+    
+    @reservation = Reservation.find(params[:id])
+    @reservation.update_attributes(status: "Approved")
+    respond_to do |format|
+      format.js { }
+    end
+  end
+
+  def reject
+  
+    @reservation = Reservation.find(params[:id])
+    respond_to do |format|
+      format.js { }
     end
   end
 

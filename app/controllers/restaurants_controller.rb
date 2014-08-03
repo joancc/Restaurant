@@ -29,17 +29,22 @@ class RestaurantsController < ApplicationController
 
   def show
     
-    @restaurant = Restaurant.find(params[:id])
-    @user = User.find(@restaurant.user_id)
-    @reservation = Reservation.new(restaurant_id: @restaurant[:id])
-    @owned_reservations = Reservation.where(restaurant_id: @restaurant[:id])
+    if current_user
+      @restaurant = Restaurant.find(params[:id])
+      @user = User.find(@restaurant.user_id)
+      @reservation = Reservation.new(restaurant_id: @restaurant[:id])
+      @owned_reservations = Reservation.where(restaurant_id: @restaurant[:id])
 
-    if current_user && @restaurant.starred_by.where(id: current_user[:id]).empty?
-      @star = Star.new
-      @user_id = current_user.id
+      if @restaurant.starred_by.where(id: current_user[:id]).empty?
+        @star = Star.new
+        @user_id = current_user.id
+      else
+        @star = Star.where("restaurant_id = ? AND user_id = ?", @restaurant.id, current_user[:id]).first
+        @user_id = current_user.id
+      end
     else
-      @star = Star.where("restaurant_id = ? AND user_id = ?", @restaurant.id, current_user[:id]).first
-      @user_id = current_user.id
+      flash[:notice] = "Please sign up to view more details and make reservations."
+      redirect_to new_user_registration_url
     end
   end
 

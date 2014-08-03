@@ -1,0 +1,3 @@
+var elementID = <%= @reservation.id %>;
+$("#reject"+elementID).hide();
+$("#"+elementID).hide().after("<span class='reservation_approved'>Approved</span>");
